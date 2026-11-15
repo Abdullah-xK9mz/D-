@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#101b21">
+<title>وِصال | تسجيل الدخول</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"><script src="config.js" defer></script><script src="api.js" defer></script><script src="auth.js" defer></script>
+</head>
+<body class="auth-page">
+<!-- بداية خلفية صفحة الدخول -->
+<div class="auth-glow glow-a"></div><div class="auth-glow glow-b"></div>
+<!-- نهاية خلفية صفحة الدخول -->
+<!-- بداية صفحة المصادقة -->
+<main class="auth-layout">
+<section class="auth-intro">
+<a class="brand brand-large" href="index.html"><span class="brand-mark">◌</span><span>وِصال</span></a>
+<div class="intro-copy"><span class="eyebrow">مساحتك. محادثاتك. عالمك.</span><h1>الكلام الحلو<br><span>يبدأ من هنا.</span></h1><p>قرّب المسافات، وابدأ محادثاتك مع الناس اللي يهموك. تجربة بسيطة وسريعة، من أي جهاز.</p></div>
+<div class="floating-messages"><div class="float-card"><span class="mini-avatar purple">م</span><div><b>مروان</b><small>عامل إيه؟ 👋</small></div><time>الآن</time></div><div class="float-card second"><span class="mini-avatar green">س</span><div><b>سارة</b><small>وصلت الرسالة ❤️</small></div><time>الآن</time></div></div>
+<div class="intro-footer"><i></i> محادثاتك في مكان واحد</div>
+</section>
+<section class="auth-panel"><div class="auth-card">
+<div class="auth-heading"><span class="mobile-brand">وِصال</span><span class="eyebrow" id="formEyebrow">أهلاً بعودتك</span><h2 id="formTitle">سجّل دخولك</h2><p id="formDescription">اكتب بياناتك علشان ترجع لمحادثاتك.</p></div>
+<div class="auth-tabs"><button class="auth-tab active" id="loginTab" type="button">تسجيل الدخول</button><button class="auth-tab" id="registerTab" type="button">حساب جديد</button></div>
+<form id="authForm" novalidate>
+<div class="field-group hidden" id="nameField"><label for="displayName">اسمك الظاهر</label><div class="input-wrap"><span>♙</span><input id="displayName" type="text" maxlength="50" placeholder="مثلاً: أحمد محمد" autocomplete="name"></div></div>
+<div class="field-group"><label for="username">اسم المستخدم</label><div class="input-wrap"><span>@</span><input id="username" type="text" maxlength="24" placeholder="username" autocomplete="username" required></div><small>استخدم الحروف الإنجليزية والأرقام والشرطة السفلية فقط.</small></div>
+<div class="field-group"><label for="password">كلمة المرور</label><div class="input-wrap"><span>▣</span><input id="password" type="password" placeholder="••••••••" autocomplete="current-password" required><button type="button" id="togglePassword" class="password-toggle">◉</button></div><small id="passwordHint" class="hidden">ثمانية أحرف على الأقل.</small></div>
+<div id="formAlert" class="form-alert hidden" role="alert"></div><button class="primary-button auth-submit" id="submitButton" type="submit"><span>دخول إلى وِصال</span><b>←</b></button>
+</form>
+<div class="auth-security">⬡ <span>بيانات حسابك محمية، ولا نعرض كلمة مرورك لأي مستخدم.</span></div><p class="auth-switch" id="authSwitchText">لسه معندكش حساب؟ <button type="button" id="switchToRegister">أنشئ حسابك</button></p>
+</div><footer class="auth-copyright">© 2026 وِصال. جميع الحقوق محفوظة.</footer></section>
+</main>
+<!-- نهاية صفحة المصادقة -->
+</body>
+</html>
+<!--
+# الدليل المرجعي لصفحة الدخول
+# الخصائص: dir=rtl لاتجاه العربية؛ defer لتأجيل تنفيذ السكربت حتى تحليل HTML؛ hidden لإخفاء الحقول؛ autocomplete لمساعدة المتصفح؛ maxlength لتحديد طول الإدخال؛ novalidate لاستخدام التحقق المخصص.
+# الألوان المستخدمة: #101B21 خلفية؛ #14232B بطاقة؛ #1B2C35 عناصر؛ #20C997 أخضر أساسي؛ #25D366 أخضر الهوية؛ #EAF2F5 نص أساسي؛ #A9BBC4 نص ثانوي؛ #F05B69 خطأ؛ #A78BFA بنفسجي؛ #FFFFFF أبيض؛ #000000 ظلال. #FFB86B و#3B82F6 و#FACC15 غير مستخدمة.
+# الخطوط: Cairo, sans-serif مستخدم في كامل الواجهة؛ sans-serif خط احتياطي.
+# العناصر: main للمحتوى الرئيسي؛ section لتقسيم الصفحة؛ form لإرسال البيانات؛ label لربط وصف الحقل؛ small للملاحظات؛ time لعرض الوقت؛ footer للتذييل.
+-->
