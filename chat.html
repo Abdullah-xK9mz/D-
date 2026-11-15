@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#101b21"><title>وِصال | المحادثات</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"><script src="config.js" defer></script><script src="api.js" defer></script><script src="chat.js" defer></script>
+</head>
+<body class="chat-page">
+<!-- بداية التطبيق -->
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+<header class="sidebar-header"><a class="brand" href="chat.html"><span class="brand-mark">◌</span><span>وِصال</span></a><div class="header-actions"><button class="icon-button" id="newChatButton" title="محادثة جديدة">✎</button><button class="icon-button" id="profileButton" title="حسابي">♙</button></div></header>
+<section class="profile-strip"><div class="avatar avatar-self" id="myAvatar">؟</div><div class="profile-strip-info"><strong id="myDisplayName">جارٍ التحميل...</strong><span id="myUsername">@username</span></div><button class="icon-button" id="moreMenuButton" title="المزيد">•••</button></section>
+<div class="sidebar-search"><span>⌕</span><input id="conversationSearch" type="search" placeholder="ابحث في محادثاتك..."><kbd>Ctrl K</kbd></div>
+<nav class="sidebar-tabs"><button class="filter-tab active" data-filter="all">الكل <span id="allCount">0</span></button><button class="filter-tab" data-filter="unread">غير مقروءة</button><button class="filter-tab" data-filter="recent">الأحدث</button></nav>
+<div class="conversation-list" id="conversationList"><div class="empty-list-state"><span class="empty-icon">▤</span><strong>مفيش محادثات لسه</strong><p>ابدأ محادثة جديدة مع أي شخص على وِصال.</p><button class="text-button" id="emptyNewChat">ابحث عن مستخدم</button></div></div>
+<footer class="sidebar-footer"><i class="online-indicator"></i><span>متصل بوِصال</span><button class="text-button logout-button" id="logoutButton">تسجيل الخروج</button></footer>
+</aside>
+<main class="main-area">
+<section class="welcome-screen" id="welcomeScreen"><div class="welcome-art"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="welcome-chat-icon">◌</div><span class="welcome-bubble bubble-one">أهلاً 👋</span><span class="welcome-bubble bubble-two">عامل إيه؟</span></div><span class="eyebrow">أهلاً بيك في وِصال</span><h1>كل محادثة ليها<br><span>حكاية.</span></h1><p>اختار محادثة من القائمة، أو ابدأ كلام جديد مع حد من أصحابك.</p><button class="primary-button" id="welcomeNewChat">＋ ابدأ محادثة جديدة</button><div class="welcome-footnote">▣ محادثاتك متاحة لحسابك فقط</div></section>
+<section class="chat-view hidden" id="chatView"><header class="chat-header"><button class="icon-button mobile-back-button" id="backToList">→</button><div class="avatar chat-avatar" id="activeAvatar">؟</div><div class="chat-person-info"><strong id="activeName">اسم المستخدم</strong><span id="activeStatus">على وِصال</span></div><div class="chat-header-actions"><button class="icon-button" id="refreshMessages" title="تحديث">↻</button><button class="icon-button" id="chatDetailsButton" title="معلومات">ⓘ</button></div></header><div class="messages-area" id="messagesArea"><div class="conversation-start">بداية المحادثة</div></div><form class="composer" id="messageForm"><button class="composer-tool" type="button" id="emojiButton">☺</button><textarea id="messageInput" rows="1" maxlength="5000" placeholder="اكتب رسالتك هنا..."></textarea><span class="composer-hint">Enter للإرسال · Shift + Enter لسطر جديد</span><button class="send-button" type="submit" id="sendButton">➤</button></form></section>
+</main></div>
+<!-- نهاية التطبيق -->
+<!-- بداية نافذة البحث -->
+<div class="modal-backdrop hidden" id="searchModal"><section class="modal-card" role="dialog" aria-modal="true"><header class="modal-header"><div><span class="eyebrow">اتصال جديد</span><h2>ابحث عن شخص</h2></div><button class="icon-button close-modal" data-close="searchModal">×</button></header><p class="modal-description">اكتب اسم المستخدم علشان تلاقي الشخص وتبدأ معاه محادثة.</p><div class="modal-search-input"><span>⌕</span><input id="userSearchInput" type="search" placeholder="ابحث باستخدام @username"></div><div class="search-results" id="userSearchResults"><div class="search-placeholder">اكتب حرفين على الأقل للبحث.</div></div></section></div>
+<!-- نهاية نافذة البحث -->
+<!-- بداية نافذة الملف الشخصي -->
+<div class="modal-backdrop hidden" id="profileModal"><section class="modal-card" role="dialog" aria-modal="true"><header class="modal-header"><div><span class="eyebrow">حسابك</span><h2>الملف الشخصي</h2></div><button class="icon-button close-modal" data-close="profileModal">×</button></header><form id="profileForm"><div class="profile-preview"><div class="avatar profile-large-avatar" id="profileAvatarPreview">؟</div><div><strong id="profileNamePreview">اسمك</strong><span id="profileUsernamePreview">@username</span></div></div><div class="field-group"><label for="profileNameInput">الاسم الظاهر</label><div class="input-wrap"><span>♙</span><input id="profileNameInput" type="text" maxlength="50" required></div></div><div class="field-group"><label for="profileAboutInput">نبذة عنك</label><div class="input-wrap"><span>ⓘ</span><input id="profileAboutInput" type="text" maxlength="120" placeholder="متاح للدردشة"></div></div><div class="form-alert hidden" id="profileAlert"></div><button class="primary-button full-button" type="submit">حفظ التغييرات</button></form></section></div>
+<!-- نهاية نافذة الملف الشخصي -->
+<div class="toast-container" id="toastContainer" aria-live="polite"></div>
+</body></html>
+<!--
+# الدليل المرجعي لصفحة المحادثات
+# الخصائص: hidden للإخفاء؛ role=dialog لتعريف النافذة؛ aria-modal لإخبار قارئ الشاشة بأنها نافذة؛ aria-live لإعلان التنبيهات؛ data-filter وdata-close سمات يقرأها JavaScript؛ textarea لحقل متعدد الأسطر؛ kbd لعرض اختصار لوحة المفاتيح.
+# الألوان المستخدمة: #101B21 خلفية؛ #14232B القائمة؛ #1B2C35 البطاقات؛ #20C997 الأخضر؛ #25D366 لون الهوية؛ #EAF2F5 النص؛ #A9BBC4 النص الثانوي؛ #F05B69 الخطأ؛ #A78BFA بنفسجي؛ #FFFFFF أبيض؛ #000000 ظلال. #FFB86B و#3B82F6 و#FACC15 غير مستخدمة.
+# الخطوط: Cairo, sans-serif مستخدم في الواجهة؛ sans-serif خط احتياطي.
+# خصائص التجاوب المستخدمة: @media لتغيير التخطيط حسب عرض وارتفاع الشاشة؛ 100dvh لقياس ارتفاع نافذة العرض الفعلي؛ env(safe-area-inset-*) لمراعاة النوتش وحواف الهواتف؛ overscroll-behavior لمنع انتقال التمرير إلى الصفحة الخلفية؛ -webkit-overflow-scrolling لتحسين تمرير القوائم على أجهزة iPhone؛ flex-basis لتثبيت أجزاء الرأس وشريط الكتابة؛ text-overflow: ellipsis لاختصار الأسماء الطويلة؛ :focus-within لتوضيح الحقل عند التركيز.
+# العناصر: aside للمحتوى الجانبي؛ nav للتنقل؛ main للمحتوى الرئيسي؛ section لتقسيم الواجهة؛ header لرأس المنطقة؛ footer للتذييل؛ form لإرسال الرسائل؛ textarea للنص متعدد الأسطر؛ time لوقت الرسالة.
+-->
